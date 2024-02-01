@@ -1,0 +1,17 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - uses: actions/setup-go@v4
+        with:
+          go-version: stable
+      - run: go version
+      - name: Build Binaries
+        run: |
+          go run main.go
